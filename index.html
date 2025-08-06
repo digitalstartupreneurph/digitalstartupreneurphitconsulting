@@ -1,662 +1,90 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digitalstartupreneur IT Consultancy - Focus on People. Focus on Technology.</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            scroll-behavior: smooth;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #64b5f6;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 120px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .hero-tagline {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: #ff6b6b;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
-        }
-        
-        .cta-button:hover {
-            background: #ff5252;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
-        }
-        
-        /* Section Styles */
-        .section {
-            padding: 80px 0;
-        }
-        
-        .section:nth-child(even) {
-            background: #f8f9fa;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #2c3e50;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: #667eea;
-            margin: 20px auto;
-            border-radius: 2px;
-        }
-        
-        /* About Section */
-        .about-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-        }
-        
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #667eea;
-            display: block;
-        }
-        
-        .stat-label {
-            color: #666;
-            margin-top: 0.5rem;
-        }
-        
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border-top: 4px solid #667eea;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
-        
-        .service-title {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-        
-        .service-description {
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        /* Team Section */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .team-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .team-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .team-role {
-            font-size: 1.2rem;
-            color: #667eea;
-            font-weight: 600;
-        }
-        
-        /* Approach Section */
-        .approach-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .step-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .step-number {
-            font-size: 3rem;
-            font-weight: bold;
-            opacity: 0.3;
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-        }
-        
-        .step-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .step-description {
-            position: relative;
-            z-index: 2;
-            opacity: 0.9;
-        }
-        
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, #2c3e50, #34495e);
-            color: white;
-        }
-        
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-        
-        .contact-form {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.9);
-            font-size: 1rem;
-            outline: none;
-            transition: background 0.3s ease;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            background: white;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .submit-btn {
-            background: #ff6b6b;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:hover {
-            background: #ff5252;
-            transform: translateY(-2px);
-        }
-        
-        .contact-info h3 {
-            margin-bottom: 2rem;
-            font-size: 1.5rem;
-        }
-        
-        .contact-item {
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .contact-icon {
-            font-size: 1.5rem;
-            color: #64b5f6;
-        }
-        
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-tagline {
-                font-size: 1.2rem;
-            }
-            
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digitalstartupreneur IT Consultancy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background: #0d47a1;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    section {
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .services, .testimonials, .contact {
+      background: #fff;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+    h2 {
+      color: #0d47a1;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #0d47a1;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #0d47a1;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">DIC</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <h1>Digitalstartupreneur IT Consultancy</h1>
+    <p>Helping manufacturing SMEs in the Philippines optimize IT, security, and digital growth.</p>
+  </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Digitalstartupreneur IT Consultancy</h1>
-                <p class="hero-tagline">Focus on people. Focus on technology.</p>
-                <a href="#contact" class="cta-button">Get Free Consultation</a>
-            </div>
-        </div>
-    </section>
+  <section class="services">
+    <h2>What We Do</h2>
+    <ul>
+      <li><strong>IT Systems Setup & Optimization:</strong> Local servers, LAN, backups, security</li>
+      <li><strong>Smart Automation:</strong> AI tools to reduce repetitive work (forms, reports, alerts)</li>
+      <li><strong>Cybersecurity:</strong> Firewall setup, endpoint protection, data safety</li>
+      <li><strong>Intranet & Collaboration:</strong> SharePoint, Google Workspace, document control</li>
+      <li><strong>Custom Dashboards:</strong> Production, machine utilization, KPIs</li>
+      <li><strong>Affiliate Tech Advisory:</strong> We recommend the right tools and help you use them right</li>
+    </ul>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About Us</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Digitalstartupreneur IT Consultancy specializes in empowering small and medium-sized businesses across the Philippines with comprehensive IT solutions. From network security and infrastructure management to web development and system optimization, we transform your technology challenges into competitive advantages.</p>
-                    
-                    <p>Our expertise spans cybersecurity implementation, server optimization, disaster recovery planning, modern communication systems, and custom web development. We don't just fix problems – we build lasting partnerships that drive your business forward through strategic technology implementation.</p>
-                </div>
-            </div>
-            
+  <section class="testimonials">
+    <h2>What Our Clients Say</h2>
+    <p>"Our production team saved hours every week after Jun's automation fixes. Highly recommended for SMEs." – QA Manager, Manufacturing Firm</p>
+    <p>"Digitalstartupreneur helped us move from paper forms to a cloud-based system without headaches." – Admin Officer</p>
+  </section>
 
-        </div>
-    </section>
+  <section class="contact">
+    <h2>Let's Work Together</h2>
+    <p>Want to streamline your operations or need help with your digital tools? Let's talk.</p>
+    <p>Email: <a href="mailto:digitalstartupreneurph@gmail.com">digitalstartupreneurph@gmail.com</a></p>
+    <a class="btn" href="https://forms.gle/your-form-link">Request Free IT Audit</a>
+  </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section">
-        <div class="container">
-            <h2 class="section-title">What We Do</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">💼</div>
-                    <h3 class="service-title">IT Consulting</h3>
-                    <p class="service-description">Strategic IT guidance to help your business leverage technology for growth and efficiency.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🛠️</div>
-                    <h3 class="service-title">Onsite and Remote Support</h3>
-                    <p class="service-description">Comprehensive technical support services available both on-site and remotely for your convenience.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔒</div>
-                    <h3 class="service-title">Security Solutions</h3>
-                    <p class="service-description">Protect your business with our comprehensive cybersecurity solutions and network protection services.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🌐</div>
-                    <h3 class="service-title">Customized Web Development</h3>
-                    <p class="service-description">Professional websites designed to enhance your brand, marketing efforts, and sales capabilities.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team" class="section">
-        <div class="container">
-            <h2 class="section-title">Our Team</h2>
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="service-icon">👨‍💻</div>
-                    <h3 class="team-role">Web Developers</h3>
-                </div>
-                <div class="team-card">
-                    <div class="service-icon">🔧</div>
-                    <h3 class="team-role">IT Support Specialists</h3>
-                </div>
-                <div class="team-card">
-                    <div class="service-icon">📋</div>
-                    <h3 class="team-role">IT Project Coordinator</h3>
-                </div>
-                <div class="team-card">
-                    <div class="service-icon">💡</div>
-                    <h3 class="team-role">IT Consultant</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Approach Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Our Approach</h2>
-            <div class="approach-steps">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Evaluate</h3>
-                    <p class="step-description">We thoroughly assess your current IT infrastructure and identify areas for improvement.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">Optimize</h3>
-                    <p class="step-description">We implement tailored solutions to enhance performance and efficiency across your systems.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Support</h3>
-                    <p class="step-description">We provide ongoing support and maintenance to ensure your systems run smoothly.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                    <form action="https://formspree.io/f/meogykbd" method="POST">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" name="company">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Tell us about your IT needs..." required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        <span>Digitalstartupreneur IT Consulting</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📞</span>
-                        <span>+63917-1107980</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">✉️</span>
-                        <span>digitalstartupreneurph@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Digitalstartupreneur IT Consultancy. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Form submission handling
-        document.querySelector('form').addEventListener('submit', function(e) {
-            const submitBtn = document.querySelector('.submit-btn');
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-        });
-
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+  <footer>
+    <p>&copy; 2025 Digitalstartupreneur. All rights reserved.</p>
+  </footer>
 </body>
 </html>
